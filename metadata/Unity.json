@@ -277,9 +277,9 @@
           {
             "name": "ExportPaths",
             "type": "List<string>",
+            "format": "-exportPackage {value}",
             "separator": " ",
             "customValue": true,
-            "format": "-exportPackage {value}",
             "help": "Export a package, given a path (or set of given paths. Currently, this option only exports whole folders at a time. This command normally needs to be used with the <c>-projectPath</c> argument."
           },
           {
@@ -287,12 +287,6 @@
             "type": "string",
             "noArgument": true,
             "help": "The path where the package should be created. This command normally needs to be used with the <c>ExportPaths</c> argument."
-          },
-          {
-            "name": "CreateProject",
-            "type": "string",
-            "format": "-createProject {value}",
-            "help": "Create an empty project at the given path."
           }
         ]
       }
