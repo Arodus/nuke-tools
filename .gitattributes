@@ -64,3 +64,6 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# Ignore all differences in line endings
+*        -crlf
