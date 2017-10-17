@@ -34,4 +34,7 @@ class Build : NukeBuild
             .OnlyWhen(() => false)
             .Executes(() => DeleteDirectories(GlobDirectories(SourceDirectory, "**/bin", "**/obj")))
             .Executes(() => EnsureCleanDirectory(OutputDirectory));
+
+    Target FastlaneMetadata => _ => _
+            .Executes(() => FastlaneMetadataCreator.CreateMetadata(SolutionDirectory / "metadata"));
 }
