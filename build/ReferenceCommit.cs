@@ -1,27 +1,30 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Nuke.Common.Tools;
-using Nuke.Core;
 using Nuke.Core.Tooling;
 
 public static class ReferenceCommit
 {
     static readonly string GitPath = ToolPathResolver.GetPathExecutable("git");
 
-    public static bool CommitIfChanged(string message, string subDirectory = null)
+
+    public static void Add(string subDirectory = null)
     {
         ProcessTasks.StartProcess(GitPath, "add" + (subDirectory == null ? "" : $" {subDirectory}"))
             .AssertZeroExitCode();
+    }
+
+    public static void Commit(string message, string subDirectory = null)
+    {
+        ProcessTasks.StartProcess(GitPath, $"git commit{subDirectory ?? ""} -m {message}")
+            .AssertZeroExitCode();
+    }
+
+    public static IEnumerable<string> GetChangedFiles(string subDirectory = null)
+    {
         var countProcess = ProcessTasks.StartProcess(GitPath,
-            "diff --cached --numstat" + (subDirectory == null ? "" : $" {subDirectory}"), redirectOutput: true);
+            "diff  --name-only" + (subDirectory == null ? "" : $" {subDirectory}"), redirectOutput: true);
         countProcess.AssertZeroExitCode();
-        var changedFiles = countProcess.Output.Any(o => o.Type == OutputType.Std);
-        if (!changedFiles)
-        {
-            Logger.Info("The references are already up to date.");
-            return false;
-        }
-        ProcessTasks.StartProcess(GitPath, $"commit -m \"{message}\"").AssertZeroExitCode();
-        return true;
+        return countProcess.Output.Where(o => o.Type == OutputType.Std).Select(o => o.Text);
     }
 }
-

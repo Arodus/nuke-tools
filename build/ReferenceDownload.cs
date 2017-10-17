@@ -1,8 +1,4 @@
-﻿// Copyright Matthias Koch 2017.
-// Distributed under the MIT License.
-// https://github.com/nuke-build/nuke/blob/master/LICENSE
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -23,28 +19,29 @@ public static class ReferenceDownload
     public static void DownloadReferences(string metadataDirectory, string referencesDirectory)
     {
         var downloadTasks = Directory.GetFiles(metadataDirectory, "*.json", SearchOption.TopDirectoryOnly)
-                .Where(x => !x.EndsWith("_schema.json"))
-                .Select(LoadTool)
-                .Where(x => x.References.Any())
-                .ForEachLazy(x => Logger.Log($"Downloading {x.References.Count} references for {x.DefinitionFile}..."))
-                .SelectMany(x => x.References.Select((y, i) => DownloadReference(y, i + 1, x.DefinitionFile, referencesDirectory)));
+            .Where(x => !x.EndsWith("_schema.json"))
+            .Select(LoadTool)
+            .Where(x => x.References.Any())
+            .ForEachLazy(x => Logger.Log($"Downloading {x.References.Count} references for {x.DefinitionFile}..."))
+            .SelectMany(x =>
+                x.References.Select((y, i) => DownloadReference(y, i + 1, x.DefinitionFile, referencesDirectory)));
 
         Task.WaitAll(downloadTasks.ToArray());
     }
 
-    static Tool LoadTool (string definitionFile)
+    static Tool LoadTool(string definitionFile)
     {
         var tool = SerializationTasks.JsonDeserializeFromFile<Tool>(definitionFile);
         tool.DefinitionFile = Path.GetFileName(definitionFile);
         return tool;
     }
 
-    static async Task DownloadReference (string reference, int index, string definitionFile, string referencesDirectory)
+    static async Task DownloadReference(string reference, int index, string definitionFile, string referencesDirectory)
     {
         try
         {
             var definitionFileWithoutExtension = Path.GetFileNameWithoutExtension(definitionFile);
-            var referenceFile = $"{definitionFileWithoutExtension}.ref.{index.ToString().PadLeft(totalWidth: 3, paddingChar: '0')}.txt";
+            var referenceFile = $"{definitionFileWithoutExtension}.ref.{index.ToString().PadLeft(3, '0')}.txt";
             var referenceContent = await GetReferenceContent(reference);
             File.WriteAllText((AbsolutePath) referencesDirectory / referenceFile, referenceContent);
         }
