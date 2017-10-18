@@ -427,7 +427,7 @@
             "name": "ItcProvider",
             "format": "--itc_provider={value}",
             "secret": false,
-            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run `pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column.",
+            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run <c>pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off</c>. The short names of providers should be listed in the second column.",
             "type": "string"
           },
           {
@@ -476,42 +476,42 @@
             "name": "PrimaryCategory",
             "format": "--primary_category={value}",
             "secret": false,
-            "help": "Metadata The english name of the primary category (e.g. `Business`, `Books`).",
+            "help": "Metadata The english name of the primary category (e.g. <c>Business</c>, <c>Books</c>).",
             "type": "string"
           },
           {
             "name": "SecondaryCategory",
             "format": "--secondary_category={value}",
             "secret": false,
-            "help": "Metadata The english name of the secondary category (e.g. `Business`, `Books`).",
+            "help": "Metadata The english name of the secondary category (e.g. <c>Business</c>, <c>Books</c>).",
             "type": "string"
           },
           {
             "name": "PrimaryFirstSubCategory",
             "format": "--primary_first_sub_category={value}",
             "secret": false,
-            "help": "Metadata The english name of the primary first sub category (e.g. `Educational`, `Puzzle`).",
+            "help": "Metadata The english name of the primary first sub category (e.g. <c>Educational</c>, <c>Puzzle</c>).",
             "type": "string"
           },
           {
             "name": "PrimarySecondSubCategory",
             "format": "--primary_second_sub_category={value}",
             "secret": false,
-            "help": "Metadata The english name of the primary second sub category (e.g. `Educational`, `Puzzle`).",
+            "help": "Metadata The english name of the primary second sub category (e.g. <c>Educational</c>, <c>Puzzle</c>).",
             "type": "string"
           },
           {
             "name": "SecondaryFirstSubCategory",
             "format": "--secondary_first_sub_category={value}",
             "secret": false,
-            "help": "Metadata The english name of the secondary first sub category (e.g. `Educational`, `Puzzle`).",
+            "help": "Metadata The english name of the secondary first sub category (e.g. <c>Educational</c>, <c>Puzzle</c>).",
             "type": "string"
           },
           {
             "name": "SecondarySecondSubCategory",
             "format": "--secondary_second_sub_category={value}",
             "secret": false,
-            "help": "Metadata The english name of the secondary second sub category (e.g. `Educational`, `Puzzle`).",
+            "help": "Metadata The english name of the secondary second sub category (e.g. <c>Educational</c>, <c>Puzzle</c>).",
             "type": "string"
           },
           {
@@ -690,7 +690,7 @@
             "name": "Scheme",
             "format": "--scheme={value}",
             "secret": false,
-            "help": "The project's scheme. Make sure it's marked as `Shared`.",
+            "help": "The project's scheme. Make sure it's marked as <c>Shared</c>.",
             "type": "string"
           },
           {
@@ -1257,7 +1257,7 @@
             "name": "SkipWaitingForBuildProcessing",
             "format": "--skip_waiting_for_build_processing={value}",
             "secret": false,
-            "help": "Don't wait for the build to process. If set to true, the changelog won't be set, `distribute_external` option won't work and no build will be distributed to testers.",
+            "help": "Don't wait for the build to process. If set to true, the changelog won't be set, <c>distribute_external</c> option won't work and no build will be distributed to testers.",
             "type": "bool"
           },
           {
@@ -1341,7 +1341,7 @@
             "name": "ItcProvider",
             "format": "--itc_provider={value}",
             "secret": false,
-            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run `pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off`. The short names of providers should be listed in the second column.",
+            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run <c>pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off</c>. The short names of providers should be listed in the second column.",
             "type": "string"
           },
           {
@@ -1585,7 +1585,7 @@
             "name": "Scheme",
             "format": "--scheme={value}",
             "secret": false,
-            "help": "The project's scheme. Make sure it's marked as `Shared`.",
+            "help": "The project's scheme. Make sure it's marked as <c>Shared</c>.",
             "type": "string"
           },
           {
@@ -2479,14 +2479,14 @@
             "name": "Command",
             "format": "command:{value}",
             "secret": false,
-            "help": "All commands you want to pass to the adb command, e.g. `kill-server`.",
+            "help": "All commands you want to pass to the adb command, e.g. <c>kill-server</c>.",
             "type": "string"
           },
           {
             "name": "AdbPath",
             "format": "adb_path:{value}",
             "secret": false,
-            "help": "The path to your `adb` binary.",
+            "help": "The path to your <c>adb</c> binary.",
             "type": "string"
           }
         ]
@@ -2502,7 +2502,7 @@
             "name": "AdbPath",
             "format": "adb_path:{value}",
             "secret": false,
-            "help": "The path to your `adb` binary.",
+            "help": "The path to your <c>adb</c> binary.",
             "type": "string"
           }
         ]
@@ -2657,7 +2657,7 @@
             "name": "Binary",
             "format": "binary:{value}",
             "secret": false,
-            "help": "Binary path. Optional for ipa if you use the `ipa` or `xcodebuild` action.",
+            "help": "Binary path. Optional for ipa if you use the <c>ipa</c> or <c>xcodebuild</c> action.",
             "type": "string"
           },
           {
@@ -2736,14 +2736,14 @@
             "name": "Platform",
             "format": "platform:{value}",
             "secret": false,
-            "help": "Platform. Either `ios` or `android`. Default is `ios`.",
+            "help": "Platform. Either <c>ios</c> or <c>android</c>. Default is <c>ios</c>.",
             "type": "string"
           },
           {
             "name": "Path",
             "format": "path:{value}",
             "secret": false,
-            "help": "Path to zipped build on the local filesystem. Either this or `url` must be specified.",
+            "help": "Path to zipped build on the local filesystem. Either this or <c>url</c> must be specified.",
             "type": "string"
           },
           {
@@ -3424,7 +3424,7 @@
             "name": "Xcarchive",
             "format": "xcarchive:{value}",
             "secret": false,
-            "help": "Path to your xcarchive file. Optional if you use the `xcodebuild` action.",
+            "help": "Path to your xcarchive file. Optional if you use the <c>xcodebuild</c> action.",
             "type": "string"
           },
           {
@@ -3438,21 +3438,21 @@
             "name": "Zip",
             "format": "zip:{value}",
             "secret": false,
-            "help": "Enable compression of the archive. Default value `true`.",
+            "help": "Enable compression of the archive. Default value <c>true</c>.",
             "type": "bool"
           },
           {
             "name": "ZipFilename",
             "format": "zip_filename:{value}",
             "secret": false,
-            "help": "Filename of the compressed archive. Will be appended by `.xcarchive.zip`. Default value is the output xcarchive filename.",
+            "help": "Filename of the compressed archive. Will be appended by <c>.xcarchive.zip</c>. Default value is the output xcarchive filename.",
             "type": "string"
           },
           {
             "name": "Versioned",
             "format": "versioned:{value}",
             "secret": false,
-            "help": "Create a versioned (date and app version) subfolder where to put the archive. Default value `true`.",
+            "help": "Create a versioned (date and app version) subfolder where to put the archive. Default value <c>true</c>.",
             "type": "bool"
           }
         ]
@@ -3561,7 +3561,7 @@
             "name": "Scheme",
             "format": "scheme:{value}",
             "secret": false,
-            "help": "The scheme to build. Can also be passed using the `xcodebuild` parameter.",
+            "help": "The scheme to build. Can also be passed using the <c>xcodebuild</c> parameter.",
             "type": "string"
           },
           {
@@ -3689,7 +3689,7 @@
             "name": "TrustPolicy",
             "format": "trust_policy:{value}",
             "secret": false,
-            "help": "Sets level of security when dealing with signed gems. Accepts `LowSecurity`, `MediumSecurity` and `HighSecurity` as values.",
+            "help": "Sets level of security when dealing with signed gems. Accepts <c>LowSecurity</c>, <c>MediumSecurity</c> and <c>HighSecurity</c> as values.",
             "type": "string"
           },
           {
@@ -4072,7 +4072,7 @@
             "name": "RepoUpdate",
             "format": "repo_update:{value}",
             "secret": false,
-            "help": "Run `pod repo update` before install.",
+            "help": "Run <c>pod repo update</c> before install.",
             "type": "bool"
           },
           {
@@ -4290,7 +4290,7 @@
             "name": "CrashlyticsPath",
             "format": "crashlytics_path:{value}",
             "secret": false,
-            "help": "Path to the submit binary in the Crashlytics bundle (iOS) or `crashlytics-devtools.jar` file (Android).",
+            "help": "Path to the submit binary in the Crashlytics bundle (iOS) or <c>crashlytics-devtools.jar</c> file (Android).",
             "type": "string"
           },
           {
@@ -4397,7 +4397,7 @@
             "name": "Timeout",
             "format": "timeout:{value}",
             "secret": false,
-            "help": "timeout interval in seconds. Set `false` if you want to specify \"no time-out\".",
+            "help": "timeout interval in seconds. Set <c>false</c> if you want to specify \"no time-out\".",
             "type": "bool"
           },
           {
@@ -4469,14 +4469,14 @@
             "name": "BaseValue",
             "format": "base:{value}",
             "secret": false,
-            "help": "The name of the branch you want your changes pulled into (defaults to `master`).",
+            "help": "The name of the branch you want your changes pulled into (defaults to <c>master</c>).",
             "type": "string"
           },
           {
             "name": "ApiUrl",
             "format": "api_url:{value}",
             "secret": false,
-            "help": "The URL of Github API - used when the Enterprise (default to `https//api.github.com`).",
+            "help": "The URL of Github API - used when the Enterprise (default to <c>https//api.github.com</c>).",
             "type": "string"
           }
         ]
@@ -4749,7 +4749,7 @@
             "name": "ArchivePath",
             "format": "archive_path:{value}",
             "secret": false,
-            "help": "Path to your xcarchive file. Optional if you use the `xcodebuild` action.",
+            "help": "Path to your xcarchive file. Optional if you use the <c>xcodebuild</c> action.",
             "type": "string"
           },
           {
@@ -5161,42 +5161,42 @@
             "name": "Task",
             "format": "task:{value}",
             "secret": false,
-            "help": "The gradle task you want to execute, e.g. `assemble` or `test`. For tasks such as `assembleMyFlavorRelease` you should use gradle(task 'assemble', flavor 'Myflavor', build_type 'Release').",
+            "help": "The gradle task you want to execute, e.g. <c>assemble</c> or <c>test</c>. For tasks such as <c>assembleMyFlavorRelease</c> you should use gradle(task 'assemble', flavor 'Myflavor', build_type 'Release').",
             "type": "string"
           },
           {
             "name": "Flavor",
             "format": "flavor:{value}",
             "secret": false,
-            "help": "The flavor that you want the task for, e.g. `MyFlavor`. If you are running the `assemble` task in a multi-flavor project, and you rely on Actions.lane_context[Actions.SharedValuesGRADLE_APK_OUTPUT_PATH] then you must specify a flavor here or else this value will be undefined.",
+            "help": "The flavor that you want the task for, e.g. <c>MyFlavor</c>. If you are running the <c>assemble</c> task in a multi-flavor project, and you rely on Actions.lane_context[Actions.SharedValuesGRADLE_APK_OUTPUT_PATH] then you must specify a flavor here or else this value will be undefined.",
             "type": "string"
           },
           {
             "name": "BuildType",
             "format": "build_type:{value}",
             "secret": false,
-            "help": "The build type that you want the task for, e.g. `Release`. Useful for some tasks such as `assemble`.",
+            "help": "The build type that you want the task for, e.g. <c>Release</c>. Useful for some tasks such as <c>assemble</c>.",
             "type": "string"
           },
           {
             "name": "Flags",
             "format": "flags:{value}",
             "secret": false,
-            "help": "All parameter flags you want to pass to the gradle command, e.g. `--exitcode --xml file.xml`.",
+            "help": "All parameter flags you want to pass to the gradle command, e.g. <c>--exitcode --xml file.xml</c>.",
             "type": "string"
           },
           {
             "name": "ProjectDir",
             "format": "project_dir:{value}",
             "secret": false,
-            "help": "The root directory of the gradle project. Defaults to `.`.",
+            "help": "The root directory of the gradle project. Defaults to <c>.</c>.",
             "type": "string"
           },
           {
             "name": "GradlePath",
             "format": "gradle_path:{value}",
             "secret": false,
-            "help": "The path to your `gradlew`. If you specify a relative path, it is assumed to be relative to the `project_dir`.",
+            "help": "The path to your <c>gradlew</c>. If you specify a relative path, it is assumed to be relative to the <c>project_dir</c>.",
             "type": "string"
           },
           {
@@ -5510,21 +5510,21 @@
             "name": "BundleShortVersion",
             "format": "bundle_short_version:{value}",
             "secret": false,
-            "help": "The bundle_short_version of your application, required when using `create_update`.",
+            "help": "The bundle_short_version of your application, required when using <c>create_update</c>.",
             "type": "string"
           },
           {
             "name": "BundleVersion",
             "format": "bundle_version:{value}",
             "secret": false,
-            "help": "The bundle_version of your application, required when using `create_update`.",
+            "help": "The bundle_version of your application, required when using <c>create_update</c>.",
             "type": "string"
           },
           {
             "name": "PublicIdentifier",
             "format": "public_identifier:{value}",
             "secret": false,
-            "help": "App id of the app you are targeting, usually you won't need this value. Required, if `upload_dsym_only` set to `true`.",
+            "help": "App id of the app you are targeting, usually you won't need this value. Required, if <c>upload_dsym_only</c> set to <c>true</c>.",
             "type": "string"
           },
           {
@@ -6985,7 +6985,7 @@
             "name": "Remote",
             "format": "remote:{value}",
             "secret": false,
-            "help": "The remote to push to. Defaults to `origin`.",
+            "help": "The remote to push to. Defaults to <c>origin</c>.",
             "type": "string"
           }
         ]
@@ -7128,14 +7128,14 @@
             "name": "Force",
             "format": "force:{value}",
             "secret": false,
-            "help": "Skip verifying of previously clean state of repo. Only recommended in combination with `files` option.",
+            "help": "Skip verifying of previously clean state of repo. Only recommended in combination with <c>files</c> option.",
             "type": "bool"
           },
           {
             "name": "SkipClean",
             "format": "skip_clean:{value}",
             "secret": false,
-            "help": "Skip 'git clean' to avoid removing untracked files like `.env`. Defaults to false.",
+            "help": "Skip 'git clean' to avoid removing untracked files like <c>.env</c>. Defaults to false.",
             "type": "bool"
           },
           {
@@ -7149,7 +7149,7 @@
             "name": "Exclude",
             "format": "exclude:{value}",
             "secret": false,
-            "help": "You can pass a string, or array of, file pattern(s) here which you want to have survive the cleaning process, and remain on disk, e.g. to leave the `artifacts` directory you would specify `exclude 'artifacts'`. Make sure this pattern is also in your gitignore! See the gitignore documentation for info on patterns.",
+            "help": "You can pass a string, or array of, file pattern(s) here which you want to have survive the cleaning process, and remain on disk, e.g. to leave the <c>artifacts</c> directory you would specify <c>exclude 'artifacts'</c>. Make sure this pattern is also in your gitignore! See the gitignore documentation for info on patterns.",
             "type": "bool"
           }
         ]
@@ -8144,14 +8144,14 @@
             "name": "ProjectConfigurationPath",
             "format": "project_configuration_path:{value}",
             "secret": false,
-            "help": "The path to your sonar project configuration file; defaults to `sonar-project.properties`\",.",
+            "help": "The path to your sonar project configuration file; defaults to <c>sonar-project.properties</c>\",.",
             "type": "string"
           },
           {
             "name": "ProjectKey",
             "format": "project_key:{value}",
             "secret": false,
-            "help": "The key sonar uses to identify the project, e.g. `name.gretzki.awesomeApp`. Must either be specified here or inside the sonar project configuration file.",
+            "help": "The key sonar uses to identify the project, e.g. <c>name.gretzki.awesomeApp</c>. Must either be specified here or inside the sonar project configuration file.",
             "type": "string"
           },
           {
@@ -8194,7 +8194,7 @@
             "name": "SonarRunnerArgs",
             "format": "sonar_runner_args:{value}",
             "secret": false,
-            "help": "Pass additional arguments to sonar-scanner. Be sure to provide the arguments with a leading `-D` e.g. FL_SONAR_RUNNER_ARGS=\"-Dsonar.verbose=true\".",
+            "help": "Pass additional arguments to sonar-scanner. Be sure to provide the arguments with a leading <c>-D</c> e.g. FL_SONAR_RUNNER_ARGS=\"-Dsonar.verbose=true\".",
             "type": "string"
           },
           {
@@ -8396,7 +8396,7 @@
             "name": "Executable",
             "format": "executable:{value}",
             "secret": false,
-            "help": "Path to the `swiftlint` executable on your machine.",
+            "help": "Path to the <c>swiftlint</c> executable on your machine.",
             "type": "string"
           }
         ]
