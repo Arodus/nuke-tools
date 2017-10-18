@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 using Nuke.Core;
 
 static class FastlaneMetadataCreator
@@ -48,25 +49,26 @@ static class FastlaneMetadataCreator
         result = result.Where(x => x != null).ToArray();
 
         Logger.Log($"Successfully extracted {result.Length} Tasks");
-        var tool = new JObject
+        var tool = new Dictionary<string,object>
         {
             ["$schema"] = "./_schema.json",
-            ["License"] = new JArray("Copyright Sebastian Karasek 2017.",
+            ["License"] =  new[] {"Copyright Sebastian Karasek 2017.",
                 "Distributed under the MIT License.",
-                "https://github.com/Arodus/nuke-tools-fastlane/blob/master/LICENSE"),
-            ["References"] = new JArray(result.SelectMany(x => x.References)),
+                "https://github.com/Arodus/nuke-tools-fastlane/blob/master/LICENSE"},
+            ["References"] = result.SelectMany(x => x.References).ToArray(),
             ["CustomExecutable"] = true,
             ["Name"] = "Fastlane",
-            ["Tasks"] = new JArray(result.Select(x => x.TaskMetadata))
+            ["Tasks"] = result.Select(x => x.TaskMetadata).ToArray()
         };
 
 
-        var metadataText = JsonConvert.SerializeObject(tool, Formatting.Indented,
-            new JsonSerializerSettings
-            {
-                DefaultValueHandling = DefaultValueHandling.Ignore,
-                NullValueHandling = NullValueHandling.Ignore
-            });
+        var metadataText = JsonConvert.SerializeObject(tool, Formatting.Indented,new JsonSerializerSettings
+        {
+            DefaultValueHandling = DefaultValueHandling.Ignore,
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        });
+
         var exists = false;
         var outputFile = targetDir + Path.DirectorySeparatorChar + "Fastlane.json";
         if (!Directory.Exists(targetDir))
@@ -105,10 +107,10 @@ static class FastlaneMetadataCreator
             if (fastlaneProperties == null || !fastlaneProperties.Any()) return null;
             var taskArguments = CreateTaskArguments(fastlaneProperties);
             var task = CreateTask(toolName, isAction);
-            var settingsClass = new JObject
+            var settingsClass = new Dictionary<string,object>
             {
                 ["BaseClass"] = "FastlaneBaseSettings",
-                ["Properties"] = new JArray(taskArguments)
+                ["Properties"] = taskArguments.ToArray()
             };
             task["SettingsClass"] = settingsClass;
             metadata.TaskMetadata = task;
@@ -121,9 +123,9 @@ static class FastlaneMetadataCreator
         }
     }
 
-    static JObject CreateTask(string taskName, bool isAction)
+    static Dictionary<string, object> CreateTask(string taskName, bool isAction)
     {
-        var task = new JObject
+        var task = new Dictionary<string,object>
         {
             ["Postfix"] =
             ConvertPascalToCamelCase(char.ToUpperInvariant(taskName[0]) + taskName.Substring(1)),
@@ -169,7 +171,6 @@ static class FastlaneMetadataCreator
         var content = await response.Content.ReadAsStringAsync();
 
 
-       
         return new KeyValuePair<string, string>(name, content);
     }
 
@@ -181,53 +182,68 @@ static class FastlaneMetadataCreator
             .Aggregate("", (s, s1) => s + char.ToUpper(s1[0]) + s1.Substring(1));
     }
 
-    static List<FastlaneProperty> ParseOptions(string optionsFile, string optionName, bool isAction)
+    static string AppendPeriodIfNeeded(string value)
+    {
+        return value.EndsWith(".") ? value : $"{value}.";
+    }
+
+    static List<FastlaneOption> ParseOptions(string optionsFile, string optionName, bool isAction)
     {
         var lines = optionsFile.Split('\n');
 
 
-        var propRegion = GetPropertyRegion(lines);
-        var region = propRegion as IList<string> ?? propRegion.ToList();
+        var optionRegionLines = GetOptionRegion(lines);
+        var region = optionRegionLines as IList<string> ?? optionRegionLines.ToList();
         if (!region.Any())
             return null;
-        var propertyLines = ParsePropertiesFromRegion(region);
-        var propJSons = propertyLines.Select(ParsePropertyToJson)
+
+
+        var optionsLines = ParseOptionsFromRegion(region);
+        var optionJsons = optionsLines.Select(ParseOptionToJson)
             .Where(s => !string.IsNullOrEmpty(s)).ToList();
 
 
-        var fastlaneProperties = new List<FastlaneProperty>();
-        foreach (var propJSon in propJSons)
+        var fastlaneOptions = new List<FastlaneOption>();
+        foreach (var optionJson in optionJsons)
             try
             {
-                var obj = JsonConvert.DeserializeObject<FastlaneProperty>(propJSon);
+                var obj = JsonConvert.DeserializeObject<FastlaneOption>(optionJson);
                 obj.IsAction = isAction;
 
 
-                fastlaneProperties.Add(obj);
+                fastlaneOptions.Add(obj);
             }
             catch (JsonReaderException e)
             {
                 var startIndex = e.LinePosition < 45 ? 0 : e.LinePosition - 45;
-                var length = startIndex + 45 >= propJSon.Length ? propJSon.Length - startIndex : 45;
+                var length = startIndex + 45 >= optionJson.Length ? optionJson.Length - startIndex : 45;
                 Logger.Warn("Error at:" + optionName + Environment.NewLine + e.Message + "    " +
-                            propJSon.Substring(startIndex, length));
+                            optionJson.Substring(startIndex, length));
             }
 
-        var opts = fastlaneProperties
+        return fastlaneOptions
             .Where(fastlaneProperty => fastlaneProperty != null)
             .ToList();
-
-        return opts;
     }
 
-
-    static JArray CreateTaskArguments([NotNull] List<FastlaneProperty> fastlaneProperties)
+    static string FormatHelp(string helpText)
     {
-        if (fastlaneProperties == null) throw new ArgumentNullException(nameof(fastlaneProperties));
-        var array = new JArray();
-        foreach (var fastlaneProperty in fastlaneProperties)
+        if (helpText == null) return "";
+        helpText = helpText.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
+
+        helpText = AppendPeriodIfNeeded(helpText);
+        //helpText = Regex.Replace(helpText, @"`(.+?)`", "<c>$1</c>");
+        //helpText = Regex.Replace(helpText, @"'(.+?)'", "<em>$1</em>");
+        return helpText;
+    }
+
+    static object[] CreateTaskArguments([NotNull] List<FastlaneOption> fastlaneOptions)
+    {
+        if (fastlaneOptions == null) throw new ArgumentNullException(nameof(fastlaneOptions));
+        var list = new List<object>();
+        foreach (var fastlaneProperty in fastlaneOptions)
         {
-            var toolArgument = new JObject();
+            var toolArgument = new Dictionary<string,object>();
 
             var name = ConvertPascalToCamelCase(fastlaneProperty.Name);
             name = name.Equals("readonly", StringComparison.InvariantCultureIgnoreCase) ? "ReadOnlyFlag" : name;
@@ -241,7 +257,7 @@ static class FastlaneMetadataCreator
                 ? fastlaneProperty.Name + ":{value}"
                 : "--" + fastlaneProperty.Name + "={value}";
             toolArgument["Secret"] = fastlaneProperty.Sensitive;
-            toolArgument["Help"] = fastlaneProperty.Description;
+            toolArgument["Help"] = FormatHelp(fastlaneProperty.Description);
 
 
             if (fastlaneProperty.IsStringArray)
@@ -263,15 +279,15 @@ static class FastlaneMetadataCreator
             {
                 toolArgument["Type"] = "string";
             }
-            array.Add(toolArgument);
+            list.Add(toolArgument);
         }
-        return array;
+        return list.ToArray();
     }
 
-    static string ParsePropertyToJson(IEnumerable<string> propertyLines)
+    static string ParseOptionToJson(IEnumerable<string> optionLines)
     {
         var props = new List<string>();
-        var propertyBlock = propertyLines.ToList();
+        var propertyBlock = optionLines.ToList();
 
 
         if (!propertyBlock.Any()) return null;
@@ -349,11 +365,11 @@ static class FastlaneMetadataCreator
         return propJson;
     }
 
-    static IEnumerable<string> GetPropertyRegion(IEnumerable<string> lines)
+    static IEnumerable<string> GetOptionRegion(IEnumerable<string> optionFileLines)
     {
         var start = false;
         var optionsStart = false;
-        foreach (var line in lines)
+        foreach (var line in optionFileLines)
         {
             if (!start)
             {
@@ -374,12 +390,12 @@ static class FastlaneMetadataCreator
         }
     }
 
-    static IEnumerable<List<string>> ParsePropertiesFromRegion(IEnumerable<string> lines)
+    static IEnumerable<List<string>> ParseOptionsFromRegion(IEnumerable<string> optionRegionlines)
     {
         var blocks = new List<List<string>>();
         var inBlock = false;
         var currentBlock = new List<string>();
-        foreach (var line in lines)
+        foreach (var line in optionRegionlines)
         {
             if (line == "") continue;
             if (line.StartsWith("#")) continue;
@@ -408,12 +424,12 @@ static class FastlaneMetadataCreator
         }
 
         public List<string> References { get; }
-        public JToken TaskMetadata { get; set; }
+        public object TaskMetadata { get; set; }
 
         public string ToolName { get; }
     }
 
-    public class FastlaneProperty
+    public class FastlaneOption
     {
         [JsonProperty("description")]
         public string Description { get; set; }
