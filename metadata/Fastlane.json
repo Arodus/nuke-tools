@@ -427,7 +427,7 @@
             "name": "ItcProvider",
             "format": "--itc_provider={value}",
             "secret": false,
-            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run <c>pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off</c>. The short names of providers should be listed in the second column.",
+            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run <c>pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u <em>USERNAME</em> -p <em>PASSWORD</em> -account_type itunes_connect -v off</c>. The short names of providers should be listed in the second column.",
             "type": "string"
           },
           {
@@ -718,7 +718,7 @@
             "name": "Configuration",
             "format": "--configuration={value}",
             "secret": false,
-            "help": "The configuration to use when building the app. Defaults to 'Release'.",
+            "help": "The configuration to use when building the app. Defaults to <em>Release</em>.",
             "type": "string"
           },
           {
@@ -1071,7 +1071,7 @@
             "name": "ForceForNewDevices",
             "format": "--force_for_new_devices={value}",
             "secret": false,
-            "help": "Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'.",
+            "help": "Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type <em>appstore</em>.",
             "type": "bool"
           },
           {
@@ -1229,7 +1229,7 @@
             "name": "Changelog",
             "format": "--changelog={value}",
             "secret": false,
-            "help": "Provide the 'what's new' text when uploading a new build.",
+            "help": "Provide the <em>what</em>s new' text when uploading a new build.",
             "type": "string"
           },
           {
@@ -1341,7 +1341,7 @@
             "name": "ItcProvider",
             "format": "--itc_provider={value}",
             "secret": false,
-            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run <c>pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u 'USERNAME' -p 'PASSWORD' -account_type itunes_connect -v off</c>. The short names of providers should be listed in the second column.",
+            "help": "The provider short name to be used with the iTMSTransporter to identify your team. To get provider short name run <c>pathToXcode.app/Contents/Applications/Application\\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u <em>USERNAME</em> -p <em>PASSWORD</em> -account_type itunes_connect -v off</c>. The short names of providers should be listed in the second column.",
             "type": "string"
           },
           {
@@ -1450,7 +1450,7 @@
             "name": "Sku",
             "format": "--sku={value}",
             "secret": false,
-            "help": "SKU Number (e.g. '1234').",
+            "help": "SKU Number (e.g. <em>1234</em>).",
             "type": "string"
           },
           {
@@ -1464,7 +1464,7 @@
             "name": "Language",
             "format": "--language={value}",
             "secret": false,
-            "help": "Primary Language (e.g. 'English', 'German').",
+            "help": "Primary Language (e.g. <em>English</em>, <em>German</em>).",
             "type": "string"
           },
           {
@@ -1727,7 +1727,7 @@
             "name": "Configuration",
             "format": "--configuration={value}",
             "secret": false,
-            "help": "The configuration to use when building the app. Defaults to 'Release'.",
+            "help": "The configuration to use when building the app. Defaults to <em>Release</em>.",
             "type": "string"
           },
           {
@@ -2244,7 +2244,7 @@
             "name": "Configuration",
             "format": "--configuration={value}",
             "secret": false,
-            "help": "The configuration to use when building the app. Defaults to 'Release'.",
+            "help": "The configuration to use when building the app. Defaults to <em>Release</em>.",
             "type": "string"
           },
           {
@@ -2541,14 +2541,14 @@
             "name": "Grouping",
             "format": "grouping:{value}",
             "secret": false,
-            "help": "Is used to keep your tags organised under one 'folder'. Defaults to 'builds'.",
+            "help": "Is used to keep your tags organised under one <em>folder</em>. Defaults to <em>builds</em>.",
             "type": "string"
           },
           {
             "name": "Prefix",
             "format": "prefix:{value}",
             "secret": false,
-            "help": "Anything you want to put in front of the version number (e.g. 'v').",
+            "help": "Anything you want to put in front of the version number (e.g. <em>v</em>).",
             "type": "string"
           },
           {
@@ -2808,7 +2808,7 @@
             "name": "Language",
             "format": "language:{value}",
             "secret": false,
-            "help": "Device language in ISO 639-1 language code, e.g. 'de'.",
+            "help": "Device language in ISO 639-1 language code, e.g. <em>de</em>.",
             "type": "string"
           },
           {
@@ -3675,7 +3675,7 @@
             "name": "Shebang",
             "format": "shebang:{value}",
             "secret": false,
-            "help": "Specify a different shebang executable name than the default (usually 'ruby').",
+            "help": "Specify a different shebang executable name than the default (usually <em>ruby</em>).",
             "type": "string"
           },
           {
@@ -4013,7 +4013,7 @@
             "name": "BinaryPath",
             "format": "binary_path:{value}",
             "secret": false,
-            "help": "Where the cloc binary lives on your system (full path including 'cloc').",
+            "help": "Where the cloc binary lives on your system (full path including <em>cloc</em>).",
             "type": "string"
           },
           {
@@ -4719,7 +4719,7 @@
             "name": "Version",
             "format": "version:{value}",
             "secret": false,
-            "help": "The app version for dSYMs you wish to download, pass in 'latest' to download only the latest build's dSYMs.",
+            "help": "The app version for dSYMs you wish to download, pass in <em>latest</em> to download only the latest build's dSYMs.",
             "type": "string"
           },
           {
@@ -5161,7 +5161,7 @@
             "name": "Task",
             "format": "task:{value}",
             "secret": false,
-            "help": "The gradle task you want to execute, e.g. <c>assemble</c> or <c>test</c>. For tasks such as <c>assembleMyFlavorRelease</c> you should use gradle(task 'assemble', flavor 'Myflavor', build_type 'Release').",
+            "help": "The gradle task you want to execute, e.g. <c>assemble</c> or <c>test</c>. For tasks such as <c>assembleMyFlavorRelease</c> you should use gradle(task <em>assemble</em>, flavor <em>Myflavor</em>, build_type <em>Release</em>).",
             "type": "string"
           },
           {
@@ -5344,7 +5344,7 @@
             "name": "CustomColor",
             "format": "custom_color:{value}",
             "secret": false,
-            "help": "Specify a custom color, this overrides the success boolean. Can be one of 'yellow', 'red', 'green', 'purple', 'gray', or 'random'.",
+            "help": "Specify a custom color, this overrides the success boolean. Can be one of <em>yellow</em>, <em>red</em>, <em>green</em>, <em>purple</em>, <em>gray</em>, or <em>random</em>.",
             "type": "string"
           },
           {
@@ -5379,7 +5379,7 @@
             "name": "MessageFormat",
             "format": "message_format:{value}",
             "secret": false,
-            "help": "Format of the message to post. Must be either 'html' or 'text'.",
+            "help": "Format of the message to post. Must be either <em>html</em> or <em>text</em>.",
             "type": "string"
           },
           {
@@ -5423,7 +5423,7 @@
             "name": "Ipa",
             "format": "ipa:{value}",
             "secret": false,
-            "help": "Path to your IPA file. Optional if you use the _gym_ or _xcodebuild_ action. For Mac zip the .app. For Android provide path to .apk file. In addition you could use this to upload .msi, .zip, .pkg, etc if you use the 'create_update' mechanism.",
+            "help": "Path to your IPA file. Optional if you use the _gym_ or _xcodebuild_ action. For Mac zip the .app. For Android provide path to .apk file. In addition you could use this to upload .msi, .zip, .pkg, etc if you use the <em>create_update</em> mechanism.",
             "type": "string"
           },
           {
@@ -5566,7 +5566,7 @@
             "name": "Strategy",
             "format": "strategy:{value}",
             "secret": false,
-            "help": "Strategy 'add' = to add the build as a new build even if it has the same build number (default); 'replace' = to replace a build with the same build number.",
+            "help": "Strategy <em>add</em> = to add the build as a new build even if it has the same build number (default); <em>replace</em> = to replace a build with the same build number.",
             "type": "string"
           },
           {
@@ -7149,7 +7149,7 @@
             "name": "Exclude",
             "format": "exclude:{value}",
             "secret": false,
-            "help": "You can pass a string, or array of, file pattern(s) here which you want to have survive the cleaning process, and remain on disk, e.g. to leave the <c>artifacts</c> directory you would specify <c>exclude 'artifacts'</c>. Make sure this pattern is also in your gitignore! See the gitignore documentation for info on patterns.",
+            "help": "You can pass a string, or array of, file pattern(s) here which you want to have survive the cleaning process, and remain on disk, e.g. to leave the <c>artifacts</c> directory you would specify <c>exclude <em>artifacts</em></c>. Make sure this pattern is also in your gitignore! See the gitignore documentation for info on patterns.",
             "type": "bool"
           }
         ]
@@ -7404,7 +7404,7 @@
             "name": "Path",
             "format": "path:{value}",
             "secret": false,
-            "help": "S3 'path'. Values from Info.plist will be substituted for keys wrapped in {}  .",
+            "help": "S3 <em>path</em>. Values from Info.plist will be substituted for keys wrapped in {}  .",
             "type": "string"
           },
           {
@@ -8839,7 +8839,7 @@
             "name": "BuildConfigurationFilter",
             "format": "build_configuration_filter:{value}",
             "secret": false,
-            "help": "Legacy option, use 'target_filter' instead.",
+            "help": "Legacy option, use <em>target_filter</em> instead.",
             "type": "string"
           },
           {

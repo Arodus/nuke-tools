@@ -233,7 +233,7 @@ static class FastlaneMetadataCreator
 
         helpText = AppendPeriodIfNeeded(helpText);
         helpText = Regex.Replace(helpText, @"`(.+?)`", "<c>$1</c>");
-        //helpText = Regex.Replace(helpText, @"'(.+?)'", "<em>$1</em>");
+        helpText = Regex.Replace(helpText, @"'(\w+?)'", "<em>$1</em>");
         return helpText;
     }
 
