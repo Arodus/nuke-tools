@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.5.5" />
-    <PackageReference Include="Nuke.Common" Version="0.1.340" />
+    <PackageReference Include="Nuke.Common" Version="*" />
     <PackageReference Include="GitVersion.CommandLine" Version="4.0.0-beta0011" />
     <PackageReference Include="Nuke.Git" Version="0.1.4" />
   </ItemGroup>

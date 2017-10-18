@@ -9,7 +9,7 @@ using static ReferenceDownload;
 
 class Build : NukeBuild
 {
-    public static int Main() { return Execute<Build>(x => x.References); }
+    public static int Main() => Execute<Build>(x => x.References);
 
     string MetadataDirectory => SolutionDirectory / "metadata";
     string ReferencesDirectory => (AbsolutePath) MetadataDirectory / "references";
@@ -33,17 +33,16 @@ class Build : NukeBuild
         .Executes(() =>
         {
             var changedReferences = ReferenceCommit.GetChangedFiles(ReferencesDirectory);
-            if (changedReferences.Any())
-            {
-                ReferenceCommit.Add(ReferencesDirectory);
-                ReferenceCommit.Commit("Update references.", ReferencesDirectory);
-                GitPush();
-                ReferencePullRequest.CreatePullRequestIfNonExists(GitRepository.Owner,
-                    GitRepository.Name, GitRepository.Branch, GitHubAccessToken);
-            }
-            else
+            if (!changedReferences.Any())
             {
                 Logger.Info("The references are already up to date.");
+                return;
             }
+
+            ReferenceCommit.Add(ReferencesDirectory);
+            ReferenceCommit.Commit("Update references.", ReferencesDirectory);
+            GitPush();
+            ReferencePullRequest.CreatePullRequestIfNonExists(GitRepository.Owner,
+                GitRepository.Name, GitRepository.Branch, GitHubAccessToken);
         });
 }
