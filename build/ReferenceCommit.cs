@@ -23,7 +23,7 @@ public static class ReferenceCommit
     public static IEnumerable<string> GetChangedFiles(string subDirectory = null)
     {
         var countProcess = ProcessTasks.StartProcess(GitPath,
-            "diff --name-only " + (subDirectory == null ? "" : $"{subDirectory}"), redirectOutput: true);
+            $"diff --name-only {subDirectory}", redirectOutput: true);
         countProcess.AssertZeroExitCode();
         return countProcess.Output.Where(o => o.Type == OutputType.Std).Select(o => o.Text);
     }
