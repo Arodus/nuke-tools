@@ -1,37 +1,48 @@
 ﻿using System;
 using System.Linq;
-using Nuke.Common;
 using Nuke.Common.Git;
-using Nuke.Common.Tools.GitVersion;
-using Nuke.Common.Tools.MSBuild;
 using Nuke.Core;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
-using static Nuke.Common.Tools.MSBuild.MSBuildTasks;
-using static Nuke.Common.Tools.NuGet.NuGetTasks;
+using static Nuke.Git.GitTasks;
 using static Nuke.Core.IO.FileSystemTasks;
 using static Nuke.Core.IO.PathConstruction;
-using static Nuke.Core.EnvironmentInfo;
+using static ReferenceDownload;
 
 class Build : NukeBuild
 {
-    // Auto-injection fields:
-    //  - [GitVersion] must have 'GitVersion.CommandLine' referenced
-    //  - [GitRepository] parses the origin from git config
-    //  - [Parameter] retrieves its value from command-line arguments or environment variables
-    //
-    //[GitVersion] readonly GitVersion GitVersion;
-    //[GitRepository] readonly GitRepository GitRepository;
-    //[Parameter] readonly string MyGetApiKey;
+    public static int Main() => Execute<Build>(x => x.References);
 
+    string MetadataDirectory => SolutionDirectory / "metadata";
+    string ReferencesDirectory => (AbsolutePath) MetadataDirectory / "references";
+    [GitRepository] readonly GitRepository GitRepository;
 
-    // This is the application entry point for the build.
-    // It also defines the default target to execute.
-    public static int Main () => Execute<Build>(x => x.Clean);
+    [Parameter(
+        "GitHub access token. Can be obtained at https://github.com/settings/tokens. Required OAuth Scope: Repo.")]
+    readonly string GitHubAccessToken;
 
 
     Target Clean => _ => _
-            // Disabled for safety.
-            .OnlyWhen(() => false)
-            .Executes(() => DeleteDirectories(GlobDirectories(SourceDirectory, "**/bin", "**/obj")))
-            .Executes(() => EnsureCleanDirectory(OutputDirectory));
+        .Executes(() => EnsureCleanDirectory(ReferencesDirectory));
+
+    Target References => _ => _
+        .DependsOn(Clean)
+        .Executes(() => DownloadReferences(MetadataDirectory, ReferencesDirectory));
+
+    Target PullRequest => _ => _
+        .Requires(() => GitHubAccessToken != null, () => GitRepository != null)
+        .DependsOn(References)
+        .Executes(() =>
+        {
+            var changedReferences = ReferenceCommit.GetChangedFiles(ReferencesDirectory);
+            if (!changedReferences.Any())
+            {
+                Logger.Info("The references are already up to date.");
+                return;
+            }
+
+            ReferenceCommit.Add(ReferencesDirectory);
+            ReferenceCommit.Commit("Update references.", ReferencesDirectory);
+            GitPush();
+            ReferencePullRequest.CreatePullRequestIfNonExists(GitRepository.Owner,
+                GitRepository.Name, GitRepository.Branch, GitHubAccessToken);
+        });
 }
