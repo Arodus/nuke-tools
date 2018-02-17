@@ -6,7 +6,7 @@
     "https://github.com/nuke-build/tools/blob/master/LICENSE"
   ],
   "references": [
-    "https://raw.githubusercontent.com/xunit/xunit/master/src/xunit.console/Program.cs"
+    "https://raw.githubusercontent.com/xunit/xunit/master/src/xunit.console/ConsoleRunner.cs"
   ],
   "name": "Xunit",
   "officialUrl": "https://xunit.github.io",

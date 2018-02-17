@@ -6,14 +6,14 @@
     "https://github.com/nuke-build/tools/blob/master/LICENSE"
   ],
   "references": [
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-run#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-restore#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-pack#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-clean#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push#//main[@id='main']/div[2]"
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-test.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-run.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-restore.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-pack.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-build.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-clean.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-publish.md",
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/core/tools/dotnet-nuget-push.md"
   ],
   "name": "DotNet",
   "officialUrl": "https://docs.microsoft.com/en-us/dotnet/core/tools/",

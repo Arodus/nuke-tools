@@ -6,7 +6,7 @@
     "https://github.com/nuke-build/tools/blob/master/LICENSE"
   ],
   "references": [
-    "https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-command-line-reference#//main[@id='main']/div[2]"
+    "https://raw.githubusercontent.com/MicrosoftDocs/visualstudio-docs/master/docs/msbuild/msbuild-command-line-reference.md"
   ],
   "name": "MSBuild",
   "officialUrl": "https://msdn.microsoft.com/en-us/library/ms164311.aspx",

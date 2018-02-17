@@ -6,7 +6,7 @@
     "https://github.com/nuke-build/tools/blob/master/LICENSE"
   ],
   "references": [
-    "https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#//main[@id='main']/div[2]"
+    "https://raw.githubusercontent.com/dotnet/docs/master/docs/framework/tools/signtool-exe.md"
   ],
   "name": "SignTool",
   "officialUrl": "https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe",

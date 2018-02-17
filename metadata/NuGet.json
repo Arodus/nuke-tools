@@ -6,9 +6,9 @@
     "https://github.com/nuke-build/tools/blob/master/LICENSE"
   ],
   "references": [
-    "https://docs.microsoft.com/en-us/nuget/tools/cli-ref-pack#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/nuget/tools/cli-ref-push#//main[@id='main']/div[2]",
-    "https://docs.microsoft.com/en-us/nuget/tools/cli-ref-restore#//main[@id='main']/div[2]"
+    "https://raw.githubusercontent.com/NuGet/docs.microsoft.com-nuget/live/docs/tools/cli-ref-pack.md",
+    "https://raw.githubusercontent.com/NuGet/docs.microsoft.com-nuget/live/docs/tools/cli-ref-push.md",
+    "https://raw.githubusercontent.com/NuGet/docs.microsoft.com-nuget/live/docs/tools/cli-ref-restore.md"
   ],
   "name": "NuGet",
   "officialUrl": "https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference",
