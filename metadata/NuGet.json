@@ -38,7 +38,7 @@
             "name": "Source",
             "type": "string",
             "format": "-Source {value}",
-            "help": "Specifies the server URL. With NuGet 2.5+, NuGet will identify a UNC or local folder source and simply copy the file there instead of pushing it using HTTP. Also, starting with NuGet 3.4.2, this is a mandatory parameter unless the <em>NuGet.Config</em> file specifies a <em>DefaultPushSource</em> value."
+            "help": "Specifies the server URL. NuGet identifies a UNC or local folder source and simply copies the file there instead of pushing it using HTTP.  Also, starting with NuGet 3.4.2, this is a mandatory parameter unless the <em>NuGet.Config</em> file specifies a <em>DefaultPushSource</em> value (see <a href=\"https://docs.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior\">Configuring NuGet behavior</a>)."
           },
           {
             "name": "SymbolSource",
@@ -70,13 +70,13 @@
             "type": "string",
             "assertion": "FileOrNull",
             "format": "-ConfigFile {value}",
-            "help": "<em>(2.5+)</em> The NuGet configuration file to apply. If not specified, <em>%AppData%\\NuGet\\NuGet.Config</em> is used."
+            "help": "The NuGet configuration file to apply. If not specified, <em>%AppData%\\NuGet\\NuGet.Config</em> is used."
           },
           {
             "name": "Verbosity",
             "type": "NuGetVerbosity",
             "format": "-Verbosity {value}",
-            "help": "<em>(2.5+)</em> Specifies the amount of details displayed in the output: <em>normal</em>, <em>quiet</em>, <em>detailed</em>."
+            "help": "Specifies the amount of details displayed in the output: <em>normal</em>, <em>quiet</em>, <em>detailed</em>."
           },
           {
             "name": "ForceEnglishOutput",
@@ -130,7 +130,7 @@
             "name": "Exclude",
             "type": "string",
             "format": "-Exclude {value}",
-            "help": "Specifies one or more wildcard patterns to exclude when creating a package."
+            "help": "Specifies one or more wildcard patterns to exclude when creating a package. To specify more than one pattern, repeat the <c>-Exclude</c> flag."
           },
           {
             "name": "ExcludeEmptyDirectories",
@@ -192,7 +192,7 @@
             "format": "-Properties {value}",
             "itemFormat": "{key}={value}",
             "separator": ";",
-            "help": "Specifies a list of <c>token=value</c> pairs, separated by semicolons, where each occurrence of <c>$token$</c> in the <c>.nuspec</c> file will be replaced with the given value. Values can be strings in quotation marks."
+            "help": "Specifies a list of properties that override values in the project file; see <a href=\"https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties\">Common MSBuild Project Properties</a> for property names. The Properties argument here is a list of token=value pairs, separated by semicolons, where each occurrence of <c>$token$</c> in the <c>.nuspec</c> file will be replaced with the given value. Values can be strings in quotation marks. Note that for the &quot;Configuration&quot; property, the default is &quot;Debug&quot;. To change to a Release configuration, use <c>-Properties Configuration=Release</c>."
           },
           {
             "name": "Suffix",
@@ -216,7 +216,7 @@
             "name": "Verbosity",
             "type": "NuGetVerbosity",
             "format": "-Verbosity {value}",
-            "help": "<em>(2.5+)</em> Specifies the amount of details displayed in the output: <em>normal</em>, <em>quiet</em>, <em>detailed</em>."
+            "help": "Specifies the amount of details displayed in the output: <em>normal</em>, <em>quiet</em>, <em>detailed</em>."
           },
           {
             "name": "Version",
@@ -344,13 +344,13 @@
             "type": "List<string>",
             "format": "-Source {value}",
             "separator": ";",
-            "help": "Specifies list of package sources to use for the restore."
+            "help": "Specifies the list of package sources (as URLs) to use for the restore. If omitted, the command uses the sources provided in configuration files, see <a href=\"https://docs.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior\">Configuring NuGet behavior</a>."
           },
           {
             "name": "Verbosity",
             "type": "NuGetVerbosity",
             "format": "-Verbosity {value}",
-            "help": "<em>(2.5+)</em> Specifies the amount of detail displayed in the output: <em>normal</em>, <em>quiet</em>, <em>detailed</em>."
+            "help": "Specifies the amount of detail displayed in the output: <em>normal</em>, <em>quiet</em>, <em>detailed</em>."
           }
         ]
       }

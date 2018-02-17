@@ -71,7 +71,7 @@
             "type": "List<string>",
             "format": "-excludebyfile:{value}",
             "separator": ";",
-            "help": "Exclude a class (or methods) by filter(s) that match the filenames. An <c>*</c> can be used as a wildcard."
+            "help": "Exclude a class (or methods) by file-filter(s) that match the filenames. An <c>*</c> can be used as a wildcard."
           },
           {
             "name": "ExcludeDirectories",
