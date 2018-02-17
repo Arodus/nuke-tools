@@ -11,6 +11,7 @@
     "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-restore#//main[@id='main']/div[2]",
     "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-pack#//main[@id='main']/div[2]",
     "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build#//main[@id='main']/div[2]",
+    "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-clean#//main[@id='main']/div[2]",
     "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish#//main[@id='main']/div[2]",
     "https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-nuget-push#//main[@id='main']/div[2]"
   ],
@@ -548,6 +549,53 @@
                 "type": "string"
               }
             ]
+          }
+        ]
+      }
+    },
+    {
+      "help": "<p>The <c>dotnet clean</c> command cleans the output of the previous build. It's implemented as an <a href=\"https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-targets\">MSBuild target</a>, so the project is evaluated when the command is run. Only the outputs created during the build are cleaned. Both intermediate <em>(obj)</em> and final output <em>(bin)</em> folders are cleaned.</p>",
+      "postfix": "Clean",
+      "definiteArgument": "clean",
+      "settingsClass": {
+        "baseClass": "DotNetSettings",
+        "properties": [
+          {
+            "name": "Project",
+            "type": "string",
+            "format": "{value}",
+            "createOverload": true,
+            "help": "The MSBuild project to clean. If a project file is not specified, MSBuild searches the current working directory for a file that has a file extension that ends in <em>proj</em> and uses that file."
+          },
+          {
+            "name": "Configuration",
+            "type": "string",
+            "format": "--configuration {value}",
+            "help": "Defines the build configuration. The default value is <c>Debug</c>. This option is only required when cleaning if you specified it during build time."
+          },
+          {
+            "name": "Framework",
+            "type": "string",
+            "format": "--framework {value}",
+            "help": "The <a href=\"https://docs.microsoft.com/en-us/dotnet/standard/frameworks\">framework</a> that was specified at build time. The framework must be defined in the <a href=\"https://docs.microsoft.com/en-us/dotnet/core/tools/csproj\">project file</a>. If you specified the framework at build time, you must specify the framework when cleaning."
+          },
+          {
+            "name": "Output",
+            "type": "string",
+            "format": "--output {value}",
+            "help": "Directory in which the build outputs are placed. Specify the <c>--framework</c> switch with the output directory switch if you specified the framework when the project was built."
+          },
+          {
+            "name": "Runtime",
+            "type": "string",
+            "format": "--runtime {value}",
+            "help": "Cleans the output folder of the specified runtime. This is used when a <a href=\"https://docs.microsoft.com/en-us/dotnet/core/deploying/index#self-contained-deployments-scd\">self-contained deployment</a> was created."
+          },
+          {
+            "name": "Verbosity",
+            "type": "DotNetVerbosity",
+            "format": "--verbosity {value}",
+            "help": "Sets the verbosity level of the command. Allowed levels are q[uiet], m[inimal], n[ormal], d[etailed], and diag[nostic]."
           }
         ]
       }
