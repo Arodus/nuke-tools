@@ -658,7 +658,7 @@
           {
             "name": "SelfContained",
             "type": "bool",
-            "format": "--self-contained",
+            "format": "--self-contained {value}",
             "help": "Publishes the .NET Core runtime with your application so the runtime doesn't need to be installed on the target machine. If a runtime identifier is specified, its default value is <c>true</c>. For more infomation about the different deployment types, see <a href=\"https://docs.microsoft.com/en-us/dotnet/core/deploying/index\">.NET Core application deployment</a>."
           },
           {
