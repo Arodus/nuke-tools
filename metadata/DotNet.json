@@ -23,7 +23,6 @@
       "postfix": "Test",
       "definiteArgument": "test",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "ProjectFile",
@@ -123,7 +122,6 @@
       "postfix": "Run",
       "definiteArgument": "run",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "Configuration",
@@ -199,7 +197,6 @@
       "postfix": "Restore",
       "definiteArgument": "restore",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "ProjectFile",
@@ -276,7 +273,6 @@
       "postfix": "Pack",
       "definiteArgument": "pack",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "Project",
@@ -437,7 +433,6 @@
       "postfix": "Build",
       "definiteArgument": "build",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "ProjectFile",
@@ -558,7 +553,6 @@
       "postfix": "Clean",
       "definiteArgument": "clean",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "Project",
@@ -605,7 +599,6 @@
       "postfix": "Publish",
       "definiteArgument": "publish",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "Project",
@@ -731,7 +724,6 @@
       "postfix": "NuGetPush",
       "definiteArgument": "nuget push",
       "settingsClass": {
-        "baseClass": "DotNetSettings",
         "properties": [
           {
             "name": "TargetPath",

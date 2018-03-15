@@ -18,7 +18,6 @@
       "postfix": "Push",
       "definiteArgument": "push",
       "settingsClass": {
-        "baseClass": "NuGetSettings",
         "properties": [
           {
             "name": "TargetPath",
@@ -103,7 +102,6 @@
       "postfix": "Pack",
       "definiteArgument": "pack",
       "settingsClass": {
-        "baseClass": "NuGetSettings",
         "properties": [
           {
             "name": "TargetPath",
@@ -232,7 +230,6 @@
       "postfix": "Restore",
       "definiteArgument": "restore",
       "settingsClass": {
-        "baseClass": "NuGetSettings",
         "properties": [
           {
             "name": "TargetPath",
