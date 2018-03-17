@@ -15,17 +15,8 @@
   "packageExecutable": "OpenCover.Console.exe",
   "tasks": [
     {
-      "customStart": true,
       "settingsClass": {
         "properties": [
-          {
-            "name": "TestAction",
-            "type": "Action",
-            "noArgument": true,
-            "customImpl": true,
-            "createOverload": true,
-            "help": "The action that executes tests."
-          },
           {
             "name": "TargetPath",
             "type": "string",
@@ -129,7 +120,6 @@
             "name": "Output",
             "type": "string",
             "format": "-output:{value}",
-            "createOverload": true,
             "help": "The location and name of the output Xml file. If no value is supplied then the current directory will be used and the output filename will be <c>results.xml</c>."
           },
           {
